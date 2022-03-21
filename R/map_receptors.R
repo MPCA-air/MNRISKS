@@ -19,10 +19,10 @@
 #' }               
 # 
 
-map_receptors <- function(data        = NULL,
-                          result_col  = "cancer_risk",
+map_receptors <- function(data         = NULL,
+                          result_col   = "cancer_risk",
                           receptor_col = "receptor",
-                          colors      = "viridis",
+                          colors       = "viridis",
                           reverse_colors = TRUE,
                           size = 5,
                           signif_digits = 3,
@@ -57,16 +57,14 @@ map_receptors <- function(data        = NULL,
     
   }
 
-  
   pal <- leaflet::colorNumeric(palette = colors, domain = data$result, reverse = reverse_colors)
   #pal <- leaflet::colorNumeric("viridis", quantile(data$result, c(seq(0,0.9,0.1),0.95,0.97,1)), reverse = T)
-  
   
   # Create labels ----
   names(data) <- tolower(names(data))
   
   data$label <- paste0("<h1 style='font-size: 2.4em; text-align: center; color: grey; margin-top: 0;'>", 
-                       signif(data$avg_result, signif_digits), title_adj, "</h1>",
+                       signif(data$result, signif_digits), title_adj, "</h1>",
                        '<p style="text-align: center; font-size:14px; margin-top: -22px; margin-bottom: 0;">', gsub("_", " ", result_col), "</p>",
                        "<hr>",
                        "<h2 style='text-align: center; font-weight: 600;'>Receptor #", data$receptor, "</h2>"
