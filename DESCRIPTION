@@ -1,0 +1,25 @@
+Package: mnrisks
+Type: Package
+Title: MNRISKS
+Version: 0.0.0.9001
+Authors@R: person("Dorian", "Kvale", email = "dorian.kvale@state.mn.us", role = c("aut", "cre"))
+Description: Helper functions and data for Minnesota's statewide air modeling platform MNRISKS.
+Depends: R (>= 3.0)
+License: GPL-3
+Encoding: UTF-8
+LazyData: no
+RoxygenNote: 7.1.2
+Imports: 
+    tibble (>= 1.0),
+    tidyr (>= 0.4),
+    dplyr (>= 0.4),
+    readr (>= 1.0),
+    utils,
+    stats,
+    magrittr,
+    sf,
+    leaflet,
+    data.table,
+    dtplyr
+Suggests: knitr,rmarkdown
+VignetteBuilder: knitr
