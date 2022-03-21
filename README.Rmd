@@ -3,7 +3,7 @@ title: "mnrisks"
 output: github_document
 ---
 
-Helper functions and results from MNRISKS - Minnesota's air modeling results of the statewide emission inventory.  
+Helper functions and results from MNRISKS - Minnesota's air modeling of the statewide emission inventory.  
 
 
 1. Install
