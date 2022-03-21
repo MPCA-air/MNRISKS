@@ -15,7 +15,7 @@ results of the statewide emission inventory.
 
 ``` r
 install.packages("remotes")
-remotes::install_github("dkvale/mnrisks")
+remotes::install_github("mpca-air/mnrisks")
 ```
 
 ## 2. Load model inputs
