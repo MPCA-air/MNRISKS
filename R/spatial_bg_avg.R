@@ -41,13 +41,20 @@ spatial_bg_avg <- function(data          = NULL,
   if (!pollutant_col %in% names(data)) data$pollutant <- NA
   
   #-- Load receptor area fractions for each block group 
-  rec_frx <- get_receptor_bg_areas(year = year) %>% ungroup()
+  #rec_frx <- get_receptor_bg_areas(year = year) %>% ungroup()
+  load("X:/Agency_Files/Outcomes/Risk_Eval_Air_Mod/_Air_Risk_Evaluation/MNRISKS/2017 MNRISKS/results/_lakes_output/adjust_correction_tbls/receptor_bg_areas_2017.rdata")
   
-  recs <- get_receptors(year = year) %>% 
-          dplyr::select(mpca_rec_id, mpca_bg_geoid) %>%
-          dplyr::rename(receptor = mpca_rec_id,
-                        geoid = mpca_bg_geoid)
+  receptor_bg_areas_2017 <- receptor_bg_areas_rounded
   
+  rec_frx <- receptor_bg_areas_2017
+  
+  ##recs <- get_receptors(year = year) %>% 
+  #        dplyr::select(mpca_rec_id, mpca_bg_geoid) %>%
+   #       dplyr::rename(receptor = mpca_rec_id,
+    #                    geoid = mpca_bg_geoid)
+  
+  recs <- select(receptor_bg_areas_2017, receptor, geoid)
+    
   #-- Update names
   data <- dplyr::rename(data,
                         receptor   = {{receptor_col}},

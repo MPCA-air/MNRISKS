@@ -4,10 +4,15 @@
 \alias{get_closed_facilities}
 \title{get_closed_facilities}
 \usage{
-get_closed_facilities(year = 2022)
+get_closed_facilities(
+  start_year = 2013,
+  end_year = as.numeric(substring(Sys.Date(), 1, 4))
+)
 }
 \arguments{
-\item{year}{The facility focus program year. Default value is 2022.}
+\item{start_year}{The start year to look for permit terminations. Default = 2010.}
+
+\item{end_year}{The end year to look for terminations. Default = Sys.Date().}
 }
 \description{
 Closed facilities from TEMPO

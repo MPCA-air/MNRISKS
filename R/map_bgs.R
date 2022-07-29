@@ -35,12 +35,12 @@ map_bgs <- function(data        = NULL,
   
   if (!geoid_col %in% names(data)) stop(paste("The geoid_col [", geoid_col, "] was not found in the data."))
   
-  
-  
   names(data)[grep(result_col, names(data))] <- "avg_result"
   names(data)[grep(geoid_col, names(data))] <- "geoid"
   
   names(data) <- tolower(names(data))
+  
+  data$geoid <- as.character(data$geoid)
   
   # Create color palette ----
   max_result <- max(data$avg_result, na.rm = T)
@@ -61,6 +61,8 @@ map_bgs <- function(data        = NULL,
   
   
   pal <- leaflet::colorNumeric(palette = colors, domain = data$avg_result, reverse = reverse_colors)
+  
+  rev_pal <- leaflet::colorNumeric(palette = colors, domain = data$avg_result, reverse = !reverse_colors)
   #pal <- leaflet::colorNumeric("viridis", quantile(data$avg_result, c(seq(0,0.9,0.1),0.95,0.97,1)), reverse = T)
   
   if (!'sf' %in% class(data)) {
@@ -118,10 +120,12 @@ map_bgs <- function(data        = NULL,
                            label = ~lapply(label, htmltools::HTML),
                            popup = ~lapply(label, htmltools::HTML)) %>%
       leaflet::addLegend("bottomright", 
-                         pal = pal, 
-                         values = ~avg_result,
-                         title = paste0(result_col, title_adj),
-                         opacity = 0.7) 
+                         pal     = rev_pal, 
+                         values  = ~avg_result,
+                         labFormat = labelFormat(transform = function(x) sort(x, decreasing = TRUE)),
+                         title   = paste0(result_col, title_adj),
+                         opacity = 0.7, 
+                          ) 
   }
 
 }

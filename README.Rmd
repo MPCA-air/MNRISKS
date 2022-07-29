@@ -131,14 +131,14 @@ kable(head(arrange(dplyr::filter(bg_avg, pollutant != "PM2.5 Diesel"), -`Inhalat
 
 ## 5. Find closed facilities
 
-The `find_closed_facilities` function returns a table with CEDR Source IDs and Agency IDs of facilities with terminated air permits from between the calendar year 2013 and the entered year. The default year is 2022. This function uses RODBC and so must be run in 32BIT R.
+The `find_closed_facilities` function returns a table with CEDR Source IDs and Agency IDs of facilities with terminated air permits from between the calendar year 2013 and the entered year. The default year is 2022.
 
 ```{r, eval = F}
 # For the default year
 closed_facilities <- get_closed_facilities()
 
 # For a future year
-closed_facilities <- get_closed_facilities(year = 2044)
+closed_facilities <- get_closed_facilities(year = 2023)
 
 ```
 

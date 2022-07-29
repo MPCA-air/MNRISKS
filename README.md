@@ -1,8 +1,8 @@
 mnrisks
 ================
 
-Helper functions and results from MNRISKS - Minnesota’s air modeling
-results of the statewide emission inventory.
+Helper functions and results from MNRISKS - Minnesota’s air modeling of
+the statewide emission inventory.
 
 1.  Install
 2.  Load model inputs
@@ -95,12 +95,12 @@ rec_areas <- get_receptor_bg_areas()
 
 | geoid        | receptor |   area_wt |
 |:-------------|---------:|----------:|
-| 270530252013 |    62016 | 0.0002763 |
-| 270530252013 |    61196 | 0.0018044 |
-| 270530252013 |    61782 | 0.0561853 |
-| 270530252013 |    61460 | 0.1254835 |
-| 270530252013 |    61965 | 0.0246828 |
-| 270530252013 |    61193 | 0.0042279 |
+| 270531260001 |    52508 | 0.0117515 |
+| 270531260001 |    52381 | 0.3542159 |
+| 270531260001 |    52225 | 0.0058149 |
+| 270531260001 |    52524 | 0.0395259 |
+| 270531260001 |    52279 | 0.1053743 |
+| 270531260001 |    52306 | 0.2695935 |
 
 The `spatial_bg_avg` function calculates the spatial block group
 averages by joining the area fractions above to MNRISKS receptor
@@ -166,14 +166,14 @@ bg_avg <- multi %>%
 The `find_closed_facilities` function returns a table with CEDR Source
 IDs and Agency IDs of facilities with terminated air permits from
 between the calendar year 2013 and the entered year. The default year is
-2022. This function uses RODBC and so must be run in 32BIT R.
+2022.
 
 ``` r
 # For the default year
 closed_facilities <- get_closed_facilities()
 
 # For a future year
-closed_facilities <- get_closed_facilities(year = 2044)
+closed_facilities <- get_closed_facilities(year = 2023)
 ```
 
 <br>
@@ -194,7 +194,9 @@ map_receptors(hennepin_onroad_inhalation_risk_2017 %>% sample_n(7200),
 
     ## Assuming "long" and "lat" are longitude and latitude, respectively
 
-![](README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+    ## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+
+    ## NULL
 
 **Block group average map**
 
@@ -216,7 +218,9 @@ map_bgs(bg_avg,
 
     ## Linking to GEOS 3.9.1, GDAL 3.2.1, PROJ 7.2.1; sf_use_s2() is TRUE
 
-![](README_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+    ## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+
+    ## NULL
 
 ## 7. Add data
 
